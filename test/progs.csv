@@ -1,0 +1,29 @@
+﻿#tag,#repo name or git url,#purpose
+,xorg,display server
+,xorg-xinit,to start xorg server
+,xorg-fonts,font package
+,sxhkd,hotkey daemon
+,base-devel,for compilation of some programs
+,bspwm,windowtilingmanager
+,ranger,terminal file manager
+,vim,it's vim
+git,https://aur.archlinux.org/sc-im.git,terminal based spreadsheet editor
+,sudo,for admin rights
+,dhcpcd,internet service
+git,https://aur.archlinux.org/polybar.git,customizable bar
+,feh,wallpaper manager
+git,https://aur.archlinux.org/spotify.git,music streaming
+,conky,tiny window displayer for desktop
+,compton,for transparency
+,htop,taskmanager
+git,https://git.suckless.org/st,suckless terminal
+#git,#https://aur.archlinux.org/brave-bin,#Browser
+,capitaine-cursors,breeze like cursors
+,neofetch,system informations
+,pavucontrol,audio settings
+,telegram-desktop,instant messenger
+,patch,for applying git diffs
+,rofi,displays installed programs
+,ttf-junicode,unicode font
+,unicode-emoji,font for including emojis
+,pulseaudio,audio daemon
