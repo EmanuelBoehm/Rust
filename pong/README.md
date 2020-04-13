@@ -1,2 +1,2 @@
 A PingPong Game using tetra.
-![alt text](./ping_pong_example.jpg)
+![alt text](./ping_pong_example.png)
