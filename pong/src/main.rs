@@ -63,8 +63,7 @@ impl GameState {
 
 impl State for GameState {
     fn draw(&mut self, ctx: &mut Context) -> tetra::Result {
-
-        graphics::clear(ctx, Color::rgb(0.2,0.5,0.3));
+        graphics::clear(ctx, Color::rgb(&self.ball.position.x / WINDOW_WIDTH, 0.5, 0.3));
         graphics::draw(ctx, &self.ball.texture, self.ball.position);
         graphics::draw(ctx, &self.player1.texture, self.player1.position);
         graphics::draw(ctx, &self.player2.texture, self.player2.position);
