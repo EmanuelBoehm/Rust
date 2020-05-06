@@ -6,7 +6,11 @@ use amethyst::{
         RenderingBundle,
     },
     utils::application_root_dir,
+    core::transform::TransformBundle,
 };
+
+mod pong;
+use crate::pong::Pong;
 
 fn main() -> amethyst::Result<()> {
     //  prints all error and warnings to my terminal
@@ -17,6 +21,7 @@ fn main() -> amethyst::Result<()> {
     let display_config_path = app_root.join("config").join("display.ron");
 
     let game_data = GameDataBuilder::default()
+        .with_bundle(TransformBundle::new())?
         .with_bundle(
             RenderingBundle::<DefaultBackend>::new()
                         // The RenderToWindow plugin provides all the scaffolding for opening a window and drawing on it
@@ -25,7 +30,7 @@ fn main() -> amethyst::Result<()> {
                         .with_clear([0.0,0.0,0.0,1.0]),
                 )
                 // RenderFlat2D plugin is used to render entities with a `SpriteRender` component.
-                .with_plugin(RenderFlat2D::default()),
+                .with_plugin(RenderFlat2D::default())
         )?;
 
     let assets_dir = app_root.join("assets");
@@ -35,7 +40,3 @@ fn main() -> amethyst::Result<()> {
     Ok(())
 }
 
-pub struct Pong;
-
-//The State trait is used to start, stop and update the game
-impl SimpleState for Pong {}
