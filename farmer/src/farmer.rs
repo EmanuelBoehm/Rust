@@ -5,12 +5,11 @@ use amethyst::{
     prelude::*,
     renderer::{Camera, ImageFormat, SpriteRender, SpriteSheet, SpriteSheetFormat, Texture},
 };
-use amethyst::window::ScreenDimensions;
 
 pub const ARENA_HEIGHT: f32 = 100.0;
 pub const ARENA_WIDTH: f32 = 100.0;
 
-pub const TILE_HEIGHT: f32 = 70.0;
+pub const TILE_HEIGHT: f32 = 1.0;
 pub const TILE_WIDTH: f32 = 70.0;
 
 #[derive(Debug)]
@@ -18,12 +17,12 @@ pub struct Farmer;
 
 //The State trait is used to start, stop and update the game
 impl SimpleState for Farmer {
-    fn on_start(&mut self, mut data: StateData<'_, GameData<'_, '_>> ){
+    fn on_start(&mut self, data: StateData<'_, GameData<'_, '_>> ){
         let mut world = data.world;
+
+        initialise_camera(world);
         let sprite_sheet_handle = load_sprite_sheet(&mut world);
         world.register::<BackgroundSprite>();
-        initialise_camera(world);
-
         //initialise_background(world, sprite_sheet_handle.clone());
         self.initialize_sprite(&mut world, sprite_sheet_handle);
 
@@ -33,20 +32,15 @@ impl Farmer {
     fn initialize_sprite(
         &mut self,
         world: &mut World,
-        sprite_sheet_handle: Handle<SpriteSheet>,
-    ) {
-        let (width, height) = {
-            let dim = world.read_resource::<ScreenDimensions>();
-            (dim.width(), dim.height())
-        };
+        sprite_sheet_handle: Handle<SpriteSheet>) {
 
         // Move the sprite to the middle of the window
         let mut sprite_transform = Transform::default();
-        sprite_transform.set_translation_xyz(TILE_WIDTH / 2., ARENA_HEIGHT / 2., 0.0);
+        sprite_transform.set_translation_xyz(TILE_WIDTH / 2., 50.0, 0.0);
 
         let sprite_render = SpriteRender {
             sprite_sheet: sprite_sheet_handle,
-            sprite_number: 0, // First sprite
+            sprite_number: 81, // First sprite
         };
 
         world

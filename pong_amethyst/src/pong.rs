@@ -12,7 +12,6 @@ pub const ARENA_WIDTH: f32 = 100.0;
 pub const PADDLE_HEIGHT: f32 = 16.0;
 pub const PADDLE_WIDTH: f32 = 40.0;
 
-
 pub struct Pong;
 
 //The State trait is used to start, stop and update the game
@@ -34,6 +33,7 @@ fn initialise_camera(world: &mut World) {
     world
         .create_entity()
         .with(Camera::standard_2d(ARENA_WIDTH, ARENA_HEIGHT))
+        .with(transform)
         .build();
 }
 //init paddles
@@ -112,5 +112,3 @@ impl Paddle {
 impl Component for Paddle {
     type Storage = DenseVecStorage<Self>;
 }
-
-

@@ -1,12 +1,12 @@
 List((
-    texture_width: 70,
-    texture_height: 70,
+    texture_width: 914,
+    texture_height: 936,
  sprites: [
     (
     x: 0,
     y: 864,
-    width: 10,
-    height: 10,
+    width: 70,
+    height: 70,
     ),
     (
     x: 0,
@@ -15,21 +15,18 @@ List((
     height: 70,
     ),
     (
-    name: "boxCoin.png",
     x: 0,
     y: 720,
     width: 70,
     height: 70,
     ),
     (
-    name: "boxCoinAlt.png",
     x: 0,
     y: 576,
     width: 70,
     height: 70,
     ),
     (
-    name: "boxCoinAlt_disabled.png",
     x: 0,
     y: 504,
     width: 70,
