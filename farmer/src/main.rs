@@ -8,6 +8,7 @@ use amethyst::{
     utils::application_root_dir,
     core::transform::TransformBundle,
 };
+use amethyst_tiles::{MortonEncoder, RenderTiles2D};
 
 mod farmer;
 use crate::farmer::Farmer;
@@ -31,6 +32,7 @@ fn main() -> amethyst::Result<()> {
                 // RenderFlat2D plugin is used to render entities with a `SpriteRender` component.
                 // needs to be added for drawing sprites effectivly
                 .with_plugin(RenderFlat2D::default())
+                .with_plugin(RenderTiles2D::<farmer::BackgroundSprite, MortonEncoder>::default()),
         )?;
         println!("got it here");
 
