@@ -1,3 +1,8 @@
 just a list of topics I should toggle for a better understanding of Rust:
 
 Rusty Object Notation Files (RON) // see pong_ama project
+
+boardgame: 
+split the Piece struct into smaller components
+use the event handling provided by amethyst
+sync the gameboard

@@ -37,6 +37,7 @@ impl SimpleState for MyState {
             self.load_sprites(world, "sprites/whiteblack.png", "sprites/whiteblack.ron");
         let piece_sprites =
             self.load_sprites(world, "sprites/chesspiecesarray.png", "sprites/chesspiecesarray.ron");
+ 
         self.init_background_sprites(world, background_sprites);
         self.init_piece_sprites(world, piece_sprites);
     }
