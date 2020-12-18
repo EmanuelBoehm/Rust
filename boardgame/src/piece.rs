@@ -6,18 +6,15 @@ pub struct Piece {
     pub x: u32,
     pub y: u32,
     pub size: f32,
-    pub status: Status,
     pub player: Player,
     pub piece_type: PieceType,
 }
 impl Piece {
     pub fn new(x: u32, y: u32, size: f32, player: Player, piece_type: PieceType) -> Piece {
-        let status = Status::None;
         Piece {
             x,
             y,
             size,
-            status,
             player,
             piece_type,
         }
@@ -59,6 +56,9 @@ impl Component for Piece {
 pub enum Status {
     None,
     Selected,
+}
+impl Component for Status {
+    type Storage = DenseVecStorage<Self>;
 }
 pub enum PieceType {
     KING,

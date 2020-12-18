@@ -1,4 +1,4 @@
-use crate::piece::Piece;
+use crate::piece::{Piece,PieceType};
 use crate::piece::Status;
 use amethyst::core::Transform;
 use amethyst::ecs::{Join, Read, ReadExpect, System, WriteStorage};
@@ -20,16 +20,40 @@ impl Default for MoveSystem {
 impl<'s> System<'s> for MoveSystem {
     type SystemData = (
         WriteStorage<'s, Transform>,
+        WriteStorage<'s, Status>,
         WriteStorage<'s, Piece>,
         Read<'s, InputHandler<StringBindings>>,
         ReadExpect<'s, ScreenDimensions>,
     );
 
-    fn run(&mut self, (mut transforms, mut pieces, inp, dim): Self::SystemData) {
-        let mut move_piece: Option<&Piece> = None;
+    fn run(&mut self, (mut transforms,mut status, mut pieces, inp, dim): Self::SystemData) {
+ // 1 check if any piece got clicked.
+ // 2 if other piece is selected find out if it can move.
+ // 3 replace if 2 gives true
+        let mut selected_pos: Option<(u32,u32)> = None;
+        let mut selected_type: Option<PieceType> = None;
         let (x, mut y) = inp.mouse_position().unwrap();
         //y from mouseinput and drawn objects are inverted.
         y = dim.height() - y;
+        for (piece,st) in (&pieces,&status).join(){
+            match st{
+                Status::Selected => {
+                    selected_pos = Some((piece.x, piece.y));
+                    selected_type = Some(piece.piece_type);
+                }
+                Status::None => {}
+            }
+        }
+
+        if self.check(x,y)
+
+
+
+
+
+
+
+        let mut move_piece: Option<&Piece> = None;
         let mut status = Status::None;
         for (piece, transform) in (&mut pieces, &mut transforms).join() {
             let input = inp.action_is_down("press").unwrap_or(false);

@@ -8,7 +8,7 @@ use amethyst::{
 };
 use nalgebra::base::Vector3;
 
-use crate::piece::{Piece,PieceType};
+use crate::piece::{Piece,PieceType, Status};
 use crate::player::Player;
 use log::info;
 
@@ -29,6 +29,7 @@ impl SimpleState for MyState {
 
         world.register::<Piece>();
 
+        world.register::<Status>();
         // Place the camera
         self::MyState::init_camera(world, &dimensions);
 
@@ -217,6 +218,7 @@ impl MyState {
                 .create_entity()
                 .with(piece)
                 .with(sprite_render_piece)
+                .with(Status::None)
                 .with(transform)
                 .build();
     }
