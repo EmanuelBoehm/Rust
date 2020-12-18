@@ -1,0 +1,9 @@
+
+#![enable(implicit_some)]
+
+Grid((
+    texture_width: 40,
+    texture_height: 20,
+    columns: 2,
+    rows: 1,
+))
